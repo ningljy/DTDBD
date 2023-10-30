@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 
 from sklearn.cluster import KMeans
 
-class Recorder(): ##记录
+class Recorder(): 
 
     def __init__(self, early_step):
         self.max = {'f1': 0,'FPED': 1}
@@ -96,19 +96,6 @@ def metrics(y_true, y_pred, category, category_dict):
 
         metrics_by_category[c]['FNR'] = (fn1 / (tp1 + fn1)).round(4)
         metrics_by_category[c]['FPR'] = (fp1 / (fp1 + tn1)).round(4)
-
-        # confusion_matrix = metr.confusion_matrix(res['y_true'], np.around(np.array(res['y_pred'])).astype(int)),
-        # confusion_matrix= list(confusion_matrix)1
-        # metrics_by_category[c]['FNR']=confusion_matrix[0][1][0]/(confusion_matrix[0][1][0]+confusion_matrix[0][1][1]).round(4).tolist(),
-        # metrics_by_category[c]['FPR']=(confusion_matrix[0][0][1]/(confusion_matrix[0][0][0]+confusion_matrix[0][0][1])).round(4).tolist(),
-        # # metrics_by_category[c]['FNR'] = list(metrics_by_category[c]['FNR'])[0]
-        # # metrics_by_category[c]['FPR'] = list(metrics_by_
-        # category[c]['FNR'])[0]
-
-        # except Exception as e:
-        #     metrics_by_category[c]['auc']=0,
-        #     metrics_by_category[c]['FNR']=0,
-        #     metrics_by_category[c]['FPR']=0,
 
     metrics_by_category['FNED'] = 0
     metrics_by_category['FPED'] = 0
