@@ -1,1 +1,4 @@
 Download the FakeNewsNet dataset and COVID dataset and extract it to the en folder.
+This dataset is from the work of Zhu et al.        
+Zhu, Yongchun, et al. "Memory-Guided Multi-View Multi-Domain Fake News Detection." IEEE Transactions on Knowledge and Data Engineering (2022).
+https://github.com/ICTMCG/M3FEND/tree/main
