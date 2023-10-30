@@ -51,7 +51,7 @@ class Trainer():
                  test_loader,
                  path1,
                  path2,
-                 Momentum=1,
+                 Momentum=0.99,
                  ):
         self.modelname1=modelname1
         self.modelname2=modelname2
@@ -118,13 +118,13 @@ class Trainer():
         a=0.5
         for epoch in range(self.epoches):
             if epoch>=5:
-                tr_f1 =20*(f1_me[1]-f1_me[0])/f1_me[0]
-                tr_fd =(fd_me[1]-fd_me[0])/fd_me[0]
+                tr_f1 =(f1_me[1]-f1_me[0])/(f1_me[0]+1e-5)
+                tr_fd =(fd_me[1]-fd_me[0])/(fd_me[0]+1e-5)
                 a= m*a - (1-m) * (tr_fd - tr_f1)/ (abs(tr_fd) + abs(tr_f1))
-                if a> 0.6:
-                    a=0.6
-                if a <0.4:
-                    a=0.4
+                if a> 0.3:
+                    a=0.3
+                if a <0.1:
+                    a=0.1
             self.model.train()
             self.teacher0.eval()
             self.teacher1.eval()
@@ -142,7 +142,7 @@ class Trainer():
                 loss1=distillation(out[0],teacher0out[0], 4)
                 loss2 = distillation(euclidean_dist(out[2]), euclidean_dist(teacher1out[4]), 4)
                 loss3=lossfun(out[1],label.float())
-                loss = a*loss1 + (1-a)*loss2 + 0.1*loss3
+                loss = a*loss1 + (0.4-a)*loss2 + 0.6*loss3
                 optimizer.zero_grad()
                 loss.backward()
                 optimizer.step()
@@ -214,11 +214,6 @@ class Trainer():
                        'recodertestpkl/' + self.modelname1+self.modelname2 + self.dataset + '_CKD.pkl')
 
         return result
-
-
-
-
-
 
     def testteacher0(self,dataloader, testorval):
         pred = []
