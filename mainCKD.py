@@ -114,21 +114,6 @@ if __name__ == '__main__':
                 "文体娱乐": 7,
                 "社会生活": 8,
             }
-        elif args.domain_num == 6:
-            config['category_dict'] = {
-                "教育考试": 0,
-                "灾难事故": 1,
-                "医药健康": 2,
-                "财经商业": 3,
-                "文体娱乐": 4,
-                "社会生活": 5,
-            }
-        elif args.domain_num == 3:
-            config['category_dict'] = {
-                "政治": 0,
-                "医药健康": 1,
-                "文体娱乐": 2,
-            }
     train_loader, val_loader, test_loader = get_dataloader(config['root_path'] + 'train.pkl',
                                                            config['root_path'] + 'val.pkl',
                                                            config['root_path'] + 'test.pkl',
