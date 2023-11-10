@@ -47,4 +47,4 @@ You can run this code to run the DTDBD framework:
 ```
 python mainCKD.py --gpu 0 --lr 0.0001 --teacher_name m3fend --student_name textcnn --dataset ch1
 ```
-
+## Reference
