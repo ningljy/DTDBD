@@ -121,8 +121,8 @@ if __name__ == '__main__':
                                                            config['dataset'])
     config['model_name1'] =config['model_name']
     config['model_name2'] =config['model_name2']
-    path1 = './recodertestpkl/' + config['model_name1'] + config['dataset'] + '.pkl'
-    path2 = './recodertestpkl/' + config['model_name2'] + config['dataset'] + '_ad.pkl'
+    path1 = './midresult/' + config['model_name1'] + config['dataset'] + '.pkl'
+    path2 = './midresult/' + config['model_name2'] + config['dataset'] + '_ad.pkl'
     trainer = CKDTrainer(config['model_name1'], config['model_name2'], config['emb_dim'], config['mlp_dims'],
                          config['usemul'], 2,
                          config['use_cuda'], config['dataset'], config['lr'], config['dropout'],
