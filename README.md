@@ -39,12 +39,12 @@ python main.py --gpu 0 --lr 0.0001 --model_name m3fend --dataset ch1
 You can run this code to get the baseline model that joins adversarial learning :
 
 ```
-python mainad.py --gpu 0 --lr 0.0001 --model_name student --dataset ch1
+python mainad.py --gpu 0 --lr 0.0001 --model_name textcnn-u --dataset ch1
 ```
 
 You can run this code to run the DTDBD framework:
 
 ```
-python mainCKD.py --gpu 0 --lr 0.0001 --teacher_name m3fend --student_name textcnn --dataset ch1
+python mainCKD.py --gpu 0 --lr 0.0001 --teacher_name m3fend --student_name textcnn-u --dataset ch1
 ```
 ## Reference
