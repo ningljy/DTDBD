@@ -93,13 +93,12 @@ class Trainer():
             self.teacher0 = M3FENDModel(self.emb_dim, self.mlp_dims, self.dropout, self.semantic_num, self.emotion_num,
                                    self.style_num, self.lnn_dim, len(self.category_dict), dataset=self.dataset,logits_shape=self.logits_shape)
         self.teacher1 =StudentADModel(self.emb_dim, self.mlp_dims, len(self.category_dict), self.dropout, dataset=self.dataset, logits_shape=self.logits_shape)
-        if self.modelname2 == 'student':
+        if self.modelname2 == 'textcnn-u':
             self.model = StudentModel(self.emb_dim, self.mlp_dims, len(self.category_dict), self.dropout,
                                   dataset=self.dataset, logits_shape=self.logits_shape)
-        elif self.modelname2=='bigru':
+        elif self.modelname2=='bigru-u':
             self.model = BiGRUModel(self.emb_dim, 1, self.mlp_dims, self.dropout, self.dataset)
-        elif self.modelname2 == 'bert':
-            self.model = BertFNModel(self.emb_dim, self.mlp_dims,len(self.category_dict), self.dropout, self.dataset)
+        
 
         if self.use_cuda:
             self.model = self.model.cuda()
@@ -115,7 +114,7 @@ class Trainer():
         f1_me=[0,0]
         fd_me=[0,0]
         m=self.Momentum
-        a=0.5
+        a=0.4
         for epoch in range(self.epoches):
             if epoch>=5:
                 tr_f1 =(f1_me[1]-f1_me[0])/(f1_me[0]+1e-5)
